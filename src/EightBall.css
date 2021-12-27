@@ -1,0 +1,30 @@
+
+.EightBall-button {
+  font-size: 2rem;
+  color: white;
+  height: 400px;
+  width: 400px;
+  border-radius: 50%;
+  margin: 20px -200px; 
+  position: fixed; 
+  top: 2%; 
+  left: 50%;
+}
+
+.EightBall-reset {
+  height: 50px;
+  width: 80px;
+  margin: 20px -40px; 
+  position: fixed; 
+  bottom: 25%; 
+  left: 50%;
+}
+
+.EightBall-stats {
+  padding: 10px;
+  position: fixed;
+  left: 10%;
+  top: 10%;
+  border: solid black 2px;
+  width: 150px;
+}
