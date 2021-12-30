@@ -26,25 +26,43 @@ const ANSWERS = [
 
 const EightBall = ({ answers = ANSWERS }) => {
 
-  const defaultMsg = { msg: "Think of a question", color: "black" };
+  const [answer, setAnswer] = useState({ msg: "Think of a question", color: "black" });
+  const [count, setCount] = useState({
+    yes: 0,
+    maybe: 0,
+    no: 0
+  });
 
   const getRandAnswer = () => {
     const idx = Math.floor(Math.random() * 20);
     const msg = answers[idx];
 
-    if (msg.color === "green") {
-      count.yes++;
-    } else if (msg.color === "goldenrod") {
-      count.maybe++;
-    } else {
-      count.no++;
-    }
+    updateCount(msg.color);
 
     setAnswer(msg);
   }
 
+  const updateCount = (color) => {
+    let outcome = "";
+
+    if (color === "green") {
+      outcome = "yes";
+    } else if (color === "goldenrod") {
+      outcome = "maybe";
+    } else {
+      outcome = "no"
+    }
+
+    setCount(c => (
+      {
+        ...c,
+        [outcome]: c[outcome] + 1
+      }
+    ));
+  }
+
   const reset = () => {
-    setAnswer(defaultMsg);
+    setAnswer({ msg: "Think of a question", color: "black" });
     setCount({
       yes: 0,
       maybe: 0,
@@ -52,12 +70,6 @@ const EightBall = ({ answers = ANSWERS }) => {
     });
   }
 
-  const [answer, setAnswer] = useState(defaultMsg);
-  const [count, setCount] = useState({
-    yes: 0,
-    maybe: 0,
-    no: 0
-  });
 
   return (
     <div className="EightBall">
